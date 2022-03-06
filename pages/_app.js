@@ -71,7 +71,7 @@ export default function MyApp({ Component, pageProps }) {
     }
   };
 
-  const [shutdownNoticeOpen, setShutdownNoticeOpen] = useState(true);
+  const [shutdownNoticeOpen, setShutdownNoticeOpen] = useState(false);
   const closeShutdown = () => {
     setShutdownNoticeOpen(false)
   }
@@ -85,14 +85,14 @@ export default function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={themeConfig}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        { validateConfigured() && (
+        {validateConfigured() && (
           <Layout changeTheme={changeTheme}>
             <Component {...pageProps} changeTheme={changeTheme} />
           </Layout>
         )}
         {!validateConfigured() && <Configure {...pageProps} />}
-        { shutdownNoticeOpen &&
-          <ShutdownNotice close={ closeShutdown } />
+        {shutdownNoticeOpen &&
+          <ShutdownNotice close={closeShutdown} />
         }
       </ThemeProvider>
     </React.Fragment>
